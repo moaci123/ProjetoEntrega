@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <%- include("../partials/cabecalho.ejs") %>
+    
+</head>
+<body>
+ 
+  
+    <%if (status == 1) { %>
+
+      <div style="background-color: #006600">
+        Produto cadastrado com Sucesso
+    </div>
+    <%} %>
+    <%if (status == 2) { %>
+
+      <div style="background-color: #Ff0000">
+        Produto removido com Sucesso
+    </div>
+    <%} %>
+    <table class = "table table-striped">
+    <th>
+        ID
+    </th>
+    <th>
+          NOME
+    </th>
+    <th>
+        QUANTIDADE
+    </th>
+    <th>
+        DETALHAR
+    </th>
+    <th>
+        REMOVER
+    </th>
+    <th>
+        ATUALIZAR
+    </th>
+    <% for (const venda of vetorVendas) {%>
+        <tr>
+        
+        <td><%= venda.id %></td>
+        <td><%= venda.nome %></td>
+        <td><%= venda.quant %></td>
+            
+        <td>
+            <a class = "btn btn-success" href = "/vendas/<%=venda.id%>">Detalhar</a>
+       </td>
+        <td>
+            <a class = "btn btn-danger" href = "/vendas/remove/<%=venda.id%>" onclick="return confirm('Deseja realmente remover?');">Remover</a>
+       </td>
+       <td>
+        <a class = "btn btn-warning" href = "/vendas/cadastrar/<%=venda._id%>" >Atualizar</a>
+       </td>
+        
+    </tr>
+   <% }%>
+</table>
+  <a href = "/">
+    <input type = "button" class="btn btn-primary" value = "voltar"/>
+</a>
+   <%- include("../partials/rodape.ejs") %>
+</body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <%- include("../partials/cabecalho.ejs") %>
+    
+</head>
+<body>
+    <%if (status == 1) { %>
+
+        <div style="background-color: #006600">
+          Usuario Cadastrado com Sucesso
+      </div>
+      <%} %>
+      <%if (status == 2) { %>
+  
+        <div style="background-color: #Ff0000">
+          Usuario removido com Sucesso
+      </div>
+      <%} %>
+      <%if (status == 3) { %>
+  
+        <div style="background-color: #15ff00">
+          Usuario atualizado com Sucesso
+      </div>
+      <%} %>
+    <table class = "table table-striped">
+    <th>
+          NOME
+    </th>
+    <th>
+          EMAIL
+    </th>
+    <th>
+        DETALHAR
+    </th>
+     <th>
+        REMOVER
+    </th>
+    <th>
+        ATUALIZAR
+    </th>
+    <% for (const usuario of vetorUsuario) {%>
+        <tr>
+        
+        <td><%= usuario.nome %></td> 
+        <td><%= usuario.email %></td>
+        
+            
+        <td>
+            <a class = "btn btn-success" href = "/usuarios/<%=usuario._id%>" >Detalhar</a>
+       </td>
+       <td>
+            <a class = "btn btn-danger" href = "/usuarios/remove/<%=usuario._id%>"onclick="return confirm('Deseja realmente remover?');">remover</a>
+       </td>
+       <td>
+        <a class = "btn btn-warning" href = "/usuarios/cadastrar/<%=usuario._id%>" >Atualizar</a>
+   </td>
+        
+    </tr>
+   <% }%>
+</table>
+<a href = "/">
+    <input type = "button" class="btn btn-primary" value = "voltar"/>
+</a>
+   <%- include("../partials/rodape.ejs") %>
+</body>
+</html>

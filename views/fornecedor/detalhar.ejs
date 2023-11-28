@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <%- include("../partials/cabecalho.ejs") %>
+</head>
+<body>
+    <div>
+        <table class = "table table-striped">
+            <th>
+                  ID
+            </th>
+            <th>
+                  NOME
+            </th>
+            <th>
+                 CNPJ
+            </th>
+                <tr>
+                <td><%= fornecedor.id %></td> 
+                <td><%= fornecedor.nome %></td>
+                <td><%= fornecedor.cnpj %></td>
+            </tr>
+           
+        </table>
+    </div>
+    <a href = "/">
+        <input type = "button" class="btn btn-primary" value = "voltar"/>
+    </a>
+    <%- include("../partials/rodape.ejs") %>
+
+</body>
+</html>
